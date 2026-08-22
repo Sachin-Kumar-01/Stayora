@@ -2,21 +2,23 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
-    title:{ 
+    title: { 
         type: String,
         required: true,
     },
+
     description: String,
+
     image: {
-        type: String,
-        set: (v) => v === "" ? "https://images.unsplash.com/photo-1764177235684-93602a424f31?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" : v,
+        filename: String,
+        url: String,
     },
+
     price: Number,
     location: String,
     country: String,
 });
 
-const Listing = mongoose.model("Listing",listingSchema);
-module.exports=Listing;
+const Listing = mongoose.model("Listing", listingSchema);
 
-
+module.exports = Listing;
